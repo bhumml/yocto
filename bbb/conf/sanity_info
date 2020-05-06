@@ -1,0 +1,3 @@
+SANITY_VERSION 1
+TMPDIR /home/lennux/src/yocto/bbb/tmp
+SSTATE_DIR /home/lennux/src/yocto/bbb/sstate-cache
