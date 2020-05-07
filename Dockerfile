@@ -50,22 +50,21 @@ RUN groupadd -g $host_gid $USER_NAME && useradd -g $host_gid -m -s /bin/bash -u 
 # normal user. Hence, we switch to the newly created user cuteradio.
 USER $USER_NAME
 
+# Clone the repositories of the meta layers into the directory $REPO_DIR/sources/cuteradio.
+WORKDIR /home/$USER_NAME
+RUN git clone --recurse-submodules https://github.com/lox-systems/yocto.git
+
 # Create the directory structure for the Yocto build in the container. The lowest two directory
 # levels must be the same as on the host.
-ENV BUILD_INPUT_DIR /home/$USER_NAME/yocto/input
+ENV REPO_DIR /home/$USER_NAME/yocto
 ENV BUILD_OUTPUT_DIR /home/$USER_NAME/yocto/$PROJECT/tmp/deploy
-RUN mkdir -p $BUILD_INPUT_DIR 
+RUN mkdir -p $REPO_DIR 
 
-# Clone the repositories of the meta layers into the directory $BUILD_INPUT_DIR/sources/cuteradio.
-WORKDIR $BUILD_INPUT_DIR
-RUN git clone --recurse-submodules https://github.com/lox-systems/yocto.git
 
 # Prepare Yocto's build environment. If TEMPLATECONF is set, the script oe-init-build-env will
 # install the customised files bblayers.conf and local.conf. This script initialises the Yocto
 # build environment. The bitbake command builds the rootfs for our embedded device.
-WORKDIR $BUILD_OUTPUT_DIR
-ENV TEMPLATECONF=$BUILD_INPUT_DIR/$PROJECT/sources/meta-$PROJECT/custom
+WORKDIR $REPO_DIR
 CMD sh build_docker.sh
-
-
+# CMD tail -f /dev/null
 
