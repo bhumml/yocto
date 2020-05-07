@@ -68,5 +68,5 @@ ENV BUILD_OUTPUT_DIR /home/$USER_NAME/yocto/$PROJECT/tmp/deploy
 WORKDIR $REPO_DIR
 CMD git pull --recurse-submodules
 CMD sh build_docker.sh
-# CMD tail -f /dev/null
+CMD tail -f /dev/null
 
