@@ -30,7 +30,7 @@ RUN locale-gen en_US.UTF-8 && update-locale LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8
 ENV LANG en_US.UTF-8
 ENV LC_ALL en_US.UTF-8
 
-ENV USER_NAME yocto
+ENV USER_NAME autobuilder
 ENV PROJECT bbb
 ENV TYPE core-image-minimal
 
@@ -60,7 +60,6 @@ RUN git clone --recurse-submodules https://github.com/lox-systems/yocto.git
 # levels must be the same as on the host.
 ENV REPO_DIR /home/$USER_NAME/yocto
 ENV BUILD_OUTPUT_DIR /home/$USER_NAME/yocto/$PROJECT/tmp/deploy
-RUN mkdir -p $REPO_DIR 
 
 
 # Prepare Yocto's build environment. If TEMPLATECONF is set, the script oe-init-build-env will
