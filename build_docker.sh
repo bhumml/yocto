@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # # Pull Repos
-# git pull --recurse-submodules
+git pull --recurse-submodules
 # Source Environment
 source /home/$USER/poky-jethro/oe-init-build-env bbb;
 # Bitbake
