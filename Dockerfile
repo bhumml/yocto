@@ -18,8 +18,9 @@ FROM ubuntu:16.04
 # without them.
 RUN apt-get update && apt-get -y install gawk wget git-core diffstat unzip texinfo gcc-multilib \
      build-essential chrpath socat cpio python python3 python3-pip python3-pexpect \
-     xz-utils debianutils iputils-ping libsdl1.2-dev xterm tar locales
-
+     xz-utils debianutils iputils-ping libsdl1.2-dev xterm tar locales bc libncurses5-dev pkg-config \
+     subversion texi2html u-boot-tools
+          
 # By default, Ubuntu uses dash as an alias for sh. Dash does not support the source command
 # needed for setting up the build environment in CMD. Use bash as an alias for sh.
 RUN rm /bin/sh && ln -s bash /bin/sh
@@ -53,6 +54,7 @@ USER $USER_NAME
 # Clone the repositories of the meta layers into the directory $REPO_DIR/sources/cuteradio.
 WORKDIR /home/$USER_NAME
 RUN git clone --recurse-submodules https://github.com/lox-systems/yocto.git
+# RUN git pull --recurse-submodules
 
 # Create the directory structure for the Yocto build in the container. The lowest two directory
 # levels must be the same as on the host.
@@ -65,6 +67,7 @@ RUN mkdir -p $REPO_DIR
 # install the customised files bblayers.conf and local.conf. This script initialises the Yocto
 # build environment. The bitbake command builds the rootfs for our embedded device.
 WORKDIR $REPO_DIR
+CMD git pull --recurse-submodules
 CMD sh build_docker.sh
 # CMD tail -f /dev/null
 
