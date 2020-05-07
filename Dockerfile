@@ -29,8 +29,9 @@ RUN locale-gen en_US.UTF-8 && update-locale LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8
 ENV LANG en_US.UTF-8
 ENV LC_ALL en_US.UTF-8
 
-ENV USER_NAME cuteradio
-ENV PROJECT cuteradio
+ENV USER_NAME yocto
+ENV PROJECT bbb
+ENV TYPE core-image-minimal
 
 # The running container writes all the build artefacts to a host directory (outside the container).
 # The container can only write files to host directories, if it uses the same user ID and
@@ -52,20 +53,20 @@ USER $USER_NAME
 # Create the directory structure for the Yocto build in the container. The lowest two directory
 # levels must be the same as on the host.
 ENV BUILD_INPUT_DIR /home/$USER_NAME/yocto/input
-ENV BUILD_OUTPUT_DIR /home/$USER_NAME/yocto/output
-RUN mkdir -p $BUILD_INPUT_DIR $BUILD_OUTPUT_DIR
+ENV BUILD_OUTPUT_DIR /home/$USER_NAME/yocto/$PROJECT/tmp/deploy
+RUN mkdir -p $BUILD_INPUT_DIR 
 
 # Clone the repositories of the meta layers into the directory $BUILD_INPUT_DIR/sources/cuteradio.
 WORKDIR $BUILD_INPUT_DIR
-RUN git clone --recurse-submodules https://github.com/bstubert/$PROJECT.git
+RUN git clone --recurse-submodules https://github.com/lox-systems/yocto.git
 
 # Prepare Yocto's build environment. If TEMPLATECONF is set, the script oe-init-build-env will
 # install the customised files bblayers.conf and local.conf. This script initialises the Yocto
 # build environment. The bitbake command builds the rootfs for our embedded device.
 WORKDIR $BUILD_OUTPUT_DIR
 ENV TEMPLATECONF=$BUILD_INPUT_DIR/$PROJECT/sources/meta-$PROJECT/custom
-CMD source $BUILD_INPUT_DIR/$PROJECT/sources/poky/oe-init-build-env build \
-    && bitbake $PROJECT-image
+CMD source $BUILD_INPUT_DIR/yocto/poky-jethro/oe-init-build-env $BUILD_INPUT_DIR/yocto/$PROJECT \
+    && bitbake $TYPE
 
 
 
