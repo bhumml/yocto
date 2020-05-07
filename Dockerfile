@@ -65,8 +65,7 @@ RUN git clone --recurse-submodules https://github.com/lox-systems/yocto.git
 # build environment. The bitbake command builds the rootfs for our embedded device.
 WORKDIR $BUILD_OUTPUT_DIR
 ENV TEMPLATECONF=$BUILD_INPUT_DIR/$PROJECT/sources/meta-$PROJECT/custom
-CMD source $BUILD_INPUT_DIR/yocto/poky-jethro/oe-init-build-env $BUILD_INPUT_DIR/yocto/$PROJECT \
-    && bitbake $TYPE
+CMD sh build_docker.sh
 
 
 
