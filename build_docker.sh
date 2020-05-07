@@ -6,10 +6,10 @@ git pull;
 # Source Environment
 sh 'source poky-jethro/oe-init-build-env bbb';
 # Bitbake
-bitbake core-image-minimal;
 
 if pwd == '/home/autbuilder/yocto/bbb'
 then
     echo 'Alles cool'
+    bitbake core-image-minimal;
 else
     echo 'Alles uncool'
