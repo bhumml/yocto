@@ -6,6 +6,7 @@ git pull --recurse-submodules
 pwd
 
 cd /home/$USER/yocto
+pwd
 source poky-jethro/oe-init-build-env bbb;
 # Bitbake
 bitbake core-image-minimal;
