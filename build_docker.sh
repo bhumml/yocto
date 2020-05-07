@@ -3,8 +3,9 @@
 # # Pull Repos
 git pull --recurse-submodules
 # Source Environment
-echo 'Das ist ein Beispiel!' 
+pwd
 
-source /home/$USER/yocto/poky-jethro/oe-init-build-env /home/$USER/yocto/bbb;
+cd /home/$USER/yocto
+source poky-jethro/oe-init-build-env bbb;
 # Bitbake
 bitbake core-image-minimal;
