@@ -5,7 +5,7 @@ git pull --recurse-submodules
 # Source Environment
 pwd
 
-cd /home/$USER/yocto
+cd /home/autobuilder/yocto
 pwd
 source poky-jethro/oe-init-build-env bbb;
 # Bitbake
