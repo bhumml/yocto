@@ -67,6 +67,6 @@ ENV BUILD_OUTPUT_DIR /home/$USER_NAME/yocto/$PROJECT/tmp/deploy
 # build environment. The bitbake command builds the rootfs for our embedded device.
 WORKDIR $REPO_DIR
 CMD git pull --recurse-submodules
-CMD sh build_docker.sh
-CMD tail -f /dev/null
+CMD source poky-jethro/oe-init-build-env bbb && git pull && bitbake core-image-minimal
+# CMD tail -f /dev/null
 
