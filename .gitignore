@@ -1,3 +1,5 @@
+/board/bbb/*
+# !/board/bbb/conf/
 # Prerequisites
 *.d
 
