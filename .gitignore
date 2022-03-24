@@ -65,7 +65,7 @@ board/rpi/tmp/hosttools/ar
 board/rpi/tmp/hosttools/as
 board/rpi/tmp/hosttools/awk
 board/rpi/tmp/hosttools/basename
-board/rpi/tmp/hosttools/bash
+board/rpi/tmp/*
 board/rpi/tmp/hosttools/bzip2
 board/rpi/tmp/hosttools/cat
 board/rpi/tmp/hosttools/chgrp
