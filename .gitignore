@@ -1,5 +1,7 @@
-!/board/bbb/conf
-/board/bbb/*
+/board/bbb/cache
+/board/bbb/sstate-cache
+/board/bbb/tmp
+/board/bbb/tmp-glibc
 /downloads
 # !/board/bbb/conf/
 # Prerequisites
