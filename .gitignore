@@ -185,3 +185,5 @@ board/rpi/tmp/hosttools/[
 board/rpi/tmp/hosttools/[
 board/rpi/tmp/hosttools/[
 board/rpi/bitbake-cookerdaemon.log
+board/bbb/foo.err
+.gitignore
