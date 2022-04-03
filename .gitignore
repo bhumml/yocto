@@ -1,8 +1,24 @@
+# Downloads & sstate-cache
+/downloads
+
+# Board Configs
+/board/rpi4/cache
+/board/rpi4/sstate-cache
+/board/rpi4/tmp
+/board/rpi4/tmp-glibc
+/board/rpi/cache
+/board/rpi/sstate-cache
+/board/rpi/tmp
+/board/rpi/tmp-glibc
+/board/bbb_pomelo_minimal/cache
+/board/bbb_pomelo_minimal/sstate-cache
+/board/bbb_pomelo_minimal/tmp
+/board/bbb_pomelo_minimal/tmp-glibc
 /board/bbb/cache
 /board/bbb/sstate-cache
 /board/bbb/tmp
 /board/bbb/tmp-glibc
-/downloads
+
 # !/board/bbb/conf/
 # Prerequisites
 *.d
