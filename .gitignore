@@ -1,23 +1,31 @@
 # Downloads & sstate-cache
 /downloads
 
-# Board Configs
+# # Board Configs
+# rpi4
 /board/rpi4/cache
 /board/rpi4/sstate-cache
 /board/rpi4/tmp
 /board/rpi4/tmp-glibc
+# rpi
 /board/rpi/cache
 /board/rpi/sstate-cache
 /board/rpi/tmp
 /board/rpi/tmp-glibc
+# bbb minimal
 /board/bbb_pomelo_minimal/cache
 /board/bbb_pomelo_minimal/sstate-cache
 /board/bbb_pomelo_minimal/tmp
 /board/bbb_pomelo_minimal/tmp-glibc
+# bbb
 /board/bbb/cache
 /board/bbb/sstate-cache
 /board/bbb/tmp
 /board/bbb/tmp-glibc
+/board/bbb/conf/machine
+
+# Yocto Files
+bitbake-cookerdaemon.log
 
 # !/board/bbb/conf/
 # Prerequisites
@@ -203,3 +211,4 @@ board/rpi/tmp/hosttools/[
 board/rpi/bitbake-cookerdaemon.log
 board/bbb/foo.err
 .gitignore
+board/bbb/bitbake-cookerdaemon.log
